@@ -56,3 +56,8 @@ dkms.conf
 *.opendb
 *.json
 *.sqlite
+
+# CLion
+.idea/
+cmake-build-debug/
+CMakeLists.txt
