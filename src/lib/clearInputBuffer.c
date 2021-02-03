@@ -5,5 +5,5 @@
 #include "clearInputBuffer.h"
 void clearInputBuffer(FILE* stream){
     char c;
-    while ((c = fgetc(stream)) != '\n' && c != EOF){}
+    while ((c = getc(stream)) != '\n' && c != EOF){}
 }
