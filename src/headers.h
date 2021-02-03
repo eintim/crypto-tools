@@ -6,4 +6,5 @@
 #define SRC_HEADERS_H 1
 #include "ceasar/ceasar.h"
 #include "lib/readString.h"
+#include "enigma/enigma.h"
 #endif //SRC_HEADERS_H

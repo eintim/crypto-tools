@@ -1,4 +1,6 @@
+#include "headers.h"
 
 int main(){
-  return 0;
-  }
+    enigma_gui();
+    return 0;
+}
