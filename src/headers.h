@@ -4,6 +4,7 @@
 
 #ifndef SRC_HEADERS_H
 #define SRC_HEADERS_H 1
-#include "ceasar/ceasar.h"
 #include "lib/readString.h"
+#include "lib/clearInputBuffer.h"
+#include <stdio.h>
 #endif //SRC_HEADERS_H
