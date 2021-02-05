@@ -4,7 +4,7 @@
 
 #include "readOneChar.h"
 
-void readOneChar(FILE * stream) {//This reads the first char and read to the next '\n'
+char readOneChar(FILE * stream) {//This reads the first char and read to the next '\n'
     char c = '\0';
     char tmp;
     while ((tmp = getc(stream)) !='\n'){

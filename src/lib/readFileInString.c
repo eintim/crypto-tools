@@ -7,8 +7,8 @@ char * readFileInString(char * filepath, unsigned int maxLen){//Reads the file a
     FILE * file;
     file = fopen(filepath, "r");
     if (file==NULL){
-        printf("%s\n"strerror(errno));
-        return NULL
+        printf("%s\n", strerror(errno));
+        return NULL;
     }
     char * str;
     str = malloc(sizeof(char));
@@ -20,5 +20,5 @@ char * readFileInString(char * filepath, unsigned int maxLen){//Reads the file a
         str[i+1]= '\0';
     }
     fclose(file);
-    return str
+    return str;
 }
