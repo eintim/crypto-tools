@@ -6,6 +6,7 @@
 #define SRC_READFILEINSTRING_H
 #include <stdio.h>
 #include <errno.h>
+#include <string.h>
 #include <malloc.h>
 char * readFileInString(char * filepath, unsigned int maxLen);
 #endif //SRC_READFILEINSTRING_H
