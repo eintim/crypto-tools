@@ -11,7 +11,9 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <errno.h>
+#include <cstring>
 void enigma_gui();
 void enigma_encrypt_gui();
 void enigma_decrypt_gui();
+int getNumberOfChar(char c);
 #endif //SRC_ENIGMA_H
