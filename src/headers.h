@@ -7,5 +7,6 @@
 #include "lib/clearInputBuffer.h"
 #include "lib/readOneChar.h"
 #include "lib/readString.h"
+#include "lib/writeStringInFile.h"
 #include <stdio.h>
 #endif //SRC_HEADERS_H

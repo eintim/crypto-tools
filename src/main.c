@@ -1,6 +1,5 @@
 #include "headers.h"
-
 int main(){
-    enigma_gui();
+    writeStringInFile("Hello World!", "Testfile.txt");
     return 0;
 }
