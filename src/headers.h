@@ -4,6 +4,6 @@
 
 #ifndef SRC_HEADERS_H
 #define SRC_HEADERS_H 1
-#include "ceasar/ceasar.h"
+#include "caesar/caesar.h"
 #include "lib/readString.h"
 #endif //SRC_HEADERS_H
