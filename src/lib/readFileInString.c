@@ -7,7 +7,7 @@ char * readFileInString(char * filepath, unsigned int maxLen){//Reads the file a
     FILE * file;
     file = fopen(filepath, "r");
     if (file==NULL){
-        printf("%s\n", strerror(errno));
+        printf("Error while reading File '%s': %s\n",filepath, strerror(errno));
         return NULL;
     }
     char * str;
