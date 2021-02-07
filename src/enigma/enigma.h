@@ -7,13 +7,14 @@
 #include "../lib/clearInputBuffer.h"
 #include "../lib/readString.h"
 #include "../lib/readOneChar.h"
+#include "../lib/readFileInString.h"
+#include "../lib/writeStringInFile.h"
 #include <malloc.h>
 #include <stdio.h>
 #include <ctype.h>
 #include <errno.h>
-#include <cstring>
 void enigma_gui();
-void enigma_encrypt_gui();
-void enigma_decrypt_gui();
-int getNumberOfChar(char c);
+void enigma(char * string, const int rotors[3], int offset[3], const int replaceChar[26]);
+int getNumberOfChar(const char c);
+int indexOfElement(int * array, int element, int len);
 #endif //SRC_ENIGMA_H
