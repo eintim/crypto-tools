@@ -1,4 +1,5 @@
-
+#include "headers.h"
 int main(){
-  return 0;
-  }
+    writeStringInFile("Hello World!", "Testfile.txt");
+    return 0;
+}
