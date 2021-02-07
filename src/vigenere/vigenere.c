@@ -1,11 +1,5 @@
 #include "vigenere.h"
 
-int main(){
-    vigenere_gui();
-
-    return 0;
-}
-
 void vigenere_gui(){
     char c;
     printf("Vigenere Menu\n");
