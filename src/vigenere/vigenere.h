@@ -10,6 +10,8 @@
 void vigenere_gui();
 void vigenere_encrypt_gui();
 void vigenere_decrypt_gui();
+void vigenere_encrypt(char* message, char* key);
+void vigenere_decrypt(char* message, char* key);
 char encrypt_char(char c, char key);
 char decrypt_char(char c, char key);
 #endif //SRC_VIGENERE_H

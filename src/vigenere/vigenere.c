@@ -37,26 +37,20 @@ void vigenere_gui(){
 }
 
 void vigenere_encrypt_gui(){
-    char* plaintext;
+    char* message;
     char* keyphrase;
     printf("Vigenere Encrypt\n");
     //Todo Read From File
 
     printf("Enter Text:\n");
-    plaintext = readString(stdin, -1);
+    message = readString(stdin, -1);
     printf("Enter Key:\n");
     keyphrase = readString(stdin, -1);
 
     //Encrypt
-    for (int i = 0, j = 0; (unsigned)i < strlen(plaintext); i++, j++)
-    {
-        if((unsigned)j > strlen(keyphrase)-1)
-            j = 0;
-
-        plaintext[i] = encrypt_char(plaintext[i],keyphrase[j]);
-    }
+    vigenere_encrypt(message, keyphrase);
     
-    printf("%s\n", plaintext);
+    printf("%s\n", message);
 }
 
 void vigenere_decrypt_gui(){
@@ -71,15 +65,29 @@ void vigenere_decrypt_gui(){
     keyphrase = readString(stdin, -1);
 
     //Decrypt
-    for (int i = 0, j = 0; (unsigned)i < strlen(message); i++, j++)
-    {
-        if((unsigned)j > strlen(keyphrase)-1)
-            j = 0;
-
-        message[i] = decrypt_char(message[i],keyphrase[j]);
-    }
+    vigenere_decrypt(message, keyphrase);
     
     printf("%s\n", message);
+}
+
+void vigenere_encrypt(char* message, char* key){
+    for (int i = 0, j = 0; (unsigned)i < strlen(message); i++, j++)
+    {
+        if((unsigned)j > strlen(key)-1)
+            j = 0;
+
+        message[i] = encrypt_char(message[i],key[j]);
+    }
+}
+
+void vigenere_decrypt(char* message, char* key){
+    for (int i = 0, j = 0; (unsigned)i < strlen(message); i++, j++)
+    {
+        if((unsigned)j > strlen(key)-1)
+            j = 0;
+
+        message[i] = decrypt_char(message[i],key[j]);
+    }
 }
 
 char encrypt_char(char c, char key){
