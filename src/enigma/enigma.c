@@ -72,7 +72,7 @@ void enigma_gui() {
         printf("Input Filename:\n");
         char *filename = readString(stdin, -1);
         int error = writeStringInFile(input_str, filename);
-        if (!error) {
+        if (error) {
             printf("Something went wrong!");
         }
     } else {
