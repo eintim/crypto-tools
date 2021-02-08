@@ -1,5 +1,5 @@
 #include "headers.h"
 int main(){
-    writeStringInFile("Hello World!", "Testfile.txt");
+    caesar_gui();
     return 0;
 }

@@ -8,4 +8,4 @@ include_directories(src/Caesar)
 add_executable(crypto_tools
         src/Caesar/caesar.c
         src/Caesar/caesar.h
-        src/main.c)
+        src/main.c src/lib/readString.c src/lib/readOneChar.c)
