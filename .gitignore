@@ -61,3 +61,6 @@ dkms.conf
 .idea/
 cmake-build-debug/
 CMakeLists.txt
+
+#VS Code
+.vscode/
