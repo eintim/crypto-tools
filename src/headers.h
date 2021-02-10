@@ -12,4 +12,5 @@
 #include "vigenere/vigenere.h"
 
 #include <stdio.h>
+#include <unistd.h> //Argument Parsing
 #endif //SRC_HEADERS_H

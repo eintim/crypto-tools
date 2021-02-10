@@ -1,6 +1,26 @@
 #include "headers.h"
 
-int main(){
+int main(int argc, char *argv[]){
+    int o;
+    while ((o = getopt(argc, argv, "evc")) != -1)
+    {
+        switch (o)
+        {
+            case 'e':
+                enigma_gui();
+                break;
+            case 'v':
+                vigenere_gui();
+                break;
+            case 'c':
+                //TODO caeser_gui();
+                break;
+            default:
+                break;
+        }
+    }
+    
+    
     char c;
     printf("Cryto Tools Menu\n");
     do {
