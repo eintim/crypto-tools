@@ -19,8 +19,8 @@ void vigenere_gui(){
             case 'h':
                 printf("Help:\n");
                 printf("\t [d]ecrypt \t- decrypt some data\n");
-                printf("\t [h]elp \t- show this menu\n");
                 printf("\t [e]ncrypt \t- encrypt some data\n");
+                printf("\t [h]elp \t- show this menu\n");
                 printf("\t [q]uit \t- leave this application\n");
                 break;
             default:
