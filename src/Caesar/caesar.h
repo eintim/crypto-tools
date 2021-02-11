@@ -6,6 +6,7 @@
 #include <ctype.h>
 #include "../lib/readString.h"
 #include "../lib/readOneChar.h"
+#include "../lib/clearInputBuffer.h"
 void caesar_gui();
 void caesar_encrypt();
 void caesar_decrypt();

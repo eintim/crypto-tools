@@ -112,6 +112,7 @@ struct inputStruct input(struct inputStruct *pointer)
     messageKey.message = readString(stdin, -1);
     printf("Enter key: ");
     scanf("%d", &messageKey.key);
+    clearInputBuffer(stdin);
     messageKey.key %= 26; // same as  messageKey.key = messageKey.key%26;
     *pointer = messageKey;
 }
