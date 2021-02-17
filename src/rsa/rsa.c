@@ -147,16 +147,27 @@ char * rsa_encrypt(const char * string, const unsigned long long exponent, const
     //Get size of on char after encryption
     int charlen = (int) ceil(log10(mod));
 
-    char * str_charlen = malloc((ceil(log10(charlen)) + 5) * sizeof(char));
+    char * str_charlen = malloc((ceil(log10(charlen)) + 4) * sizeof(char));
     sprintf(str_charlen, "%%0%dd ", charlen); //Convert int to Formatstring to allow converion to Int with int leading zeros
 
+    int chars_per_encryption = (((int) ceil(log10(mod)))/ 3);
+    //Calculate amount of Space needed
+    int space;
+    space = (strlen(string) / chars_per_encryption)+1;
+    space = (charlen+1) * space +1;
+
     //Main Encrypt loop
-    char * output = malloc(((charlen+1) * strlen(string)+1) * sizeof(char)); //Output String
+    char * output = malloc(space* sizeof(char)); //Output String
+    output[space] = '\0';
     unsigned long long current; //Current value for encryption
-    for (int i = 0; i < strlen(string); ++i) {
-        int len = 0;
-        unsigned long long c = (unsigned long long) string[i];
+    for (int i = 0; i < strlen(string); i += chars_per_encryption) {
+        unsigned long long c = 0;
+        for (int j = 0; j < chars_per_encryption; ++j) {
+            c += ((unsigned long long) string[i+j]) * pow(100, chars_per_encryption-j); //Message to be encrypted
+        }
         current = pow_mod(c, exponent, mod); //Encryption
+
+        int len = 0;
         len = sprintf(output+i*(charlen+1), str_charlen, current); //Convvert int to String
         if (len != (charlen+1)){
             printf("Error while encoding '%c' got %d", string[i], current);
