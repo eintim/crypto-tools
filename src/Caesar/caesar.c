@@ -1,17 +1,11 @@
 #include "caesar.h"
 
- struct inputStruct
-{
-    char *message;
-    int key;
-    int mode;
 
-};
 
 void caesar_gui()
 {
     char c;
-    printf("Caesar Menu\n");
+    printf("caesar Menu\n");
     do {
         printf("-> ");
         c = tolower(readOneChar(stdin));
@@ -23,7 +17,7 @@ void caesar_gui()
                 caesar_encrypt();
                 break;
             case 'q':
-                printf("Leaving Caesar...\n");
+                printf("Leaving caesar...\n");
                 break;
             case 'h':
                 printf("Help:\n");
@@ -43,96 +37,103 @@ void caesar_gui()
 void caesar_encrypt()
 {
 
-
+    int mode = 0;
     struct inputStruct inputv;
     struct inputStruct *pointer = &inputv;
-    pointer->mode = 0;
-    input(pointer);
-
-    for (int i = 0; inputv.message[i] != '\0'; ++i)
-    {
 
 
-        if (inputv.message[i] >= 'a' && inputv.message[i] <= 'z')
-        {
-
-            inputv.message[i] = inputv.message[i] + inputv.key;
-            inputv.message[i] = (inputv.message[i] - 'a'+26) % 26 + 'a';
+    if (input(pointer) == 0) {
+        for (int i = 0; inputv.message[i] != '\0'; ++i) {
 
 
+            if (inputv.message[i] >= 'a' && inputv.message[i] <= 'z') {
+
+                inputv.message[i] = inputv.message[i] + inputv.key;
+                inputv.message[i] = (inputv.message[i] - 'a' + 26) % 26 + 'a';
+
+
+            } else if (inputv.message[i] >= 'A' && inputv.message[i] <= 'Z') {
+                inputv.message[i] = inputv.message[i] + inputv.key;
+                inputv.message[i] = (inputv.message[i] - 'A' + 26) % 26 + 'A';
+
+            }
         }
+        output(mode, pointer);
 
-        else if (inputv.message[i] >= 'A' && inputv.message[i] <= 'Z')
-        {
-            inputv.message[i] = inputv.message[i] + inputv.key;
-            inputv.message[i] = (inputv.message[i] - 'A'+26) % 26 + 'A';
-
-        }
     }
-
-    printf("Encrypted message: %s\n", inputv.message);
-    free(inputv.message);
-
 
 }
 
-void caesar_decrypt()
-{
-
+void caesar_decrypt() {
+    int mode = 1;
     struct inputStruct inputv;
     struct inputStruct *pointer = &inputv;
-    pointer->mode = 0;
-
-    input(pointer);
-    for (int i = 0; inputv.message[i] != '\0'; ++i)
-    {
 
 
-        if (inputv.message[i] >= 'a' && inputv.message[i] <= 'z')
-        {
+    if (input(pointer) == 0) {
 
-            inputv.message[i] = inputv.message[i] - inputv.key;
-            inputv.message[i] = (inputv.message[i] - 'a'+26) % 26 + 'a';
+        for (int i = 0; inputv.message[i] != '\0'; ++i) {
 
 
-        }
+            if (inputv.message[i] >= 'a' && inputv.message[i] <= 'z') {
 
-        else if (inputv.message[i] >= 'A' && inputv.message[i] <= 'Z')
-        {
-            inputv.message[i] = inputv.message[i] - inputv.key;
-            inputv.message[i] = (inputv.message[i] - 'A'+26) % 26 + 'A';
+                inputv.message[i] = inputv.message[i] - inputv.key;
+                inputv.message[i] = (inputv.message[i] - 'a' + 26) % 26 + 'a';
+
+
+            } else if (inputv.message[i] >= 'A' && inputv.message[i] <= 'Z') {
+                inputv.message[i] = inputv.message[i] - inputv.key;
+                inputv.message[i] = (inputv.message[i] - 'A' + 26) % 26 + 'A';
+
+            }
 
         }
+        output(mode, pointer);
+
 
     }
-    printf("Decrypted message: %s\n", inputv.message);
-    free(inputv.message);
-
-
 }
 
-
-struct inputStruct input(struct inputStruct *pointer )
+int input(struct inputStruct *pointer )
 {
     char c;
-    int *filename;
+
     struct inputStruct messageKey;
-    printf("work with files ?(y,n) \n");
+    printf("work with files? (y,N) ");
     c = tolower(readOneChar(stdin));
     if (c == 'y')
     {
-        free(c);
-        printf("read from file? (y,n) \n");
+
+        printf("read from file? (y,N) ");
         c = tolower(readOneChar(stdin));
         if(c == 'y')
         {
-            printf("write the filename:");
-            filename = readString(stdin, -1);
-            messageKey.message = readFileInString(filename, -1);
+
+            printf("Enter filename:\n");
+            messageKey.filename = readString(stdin, -1);
+            messageKey.message = readFileInString(messageKey.filename, -1);
+            if(messageKey.message == NULL)
+            {
+                return 1;
+            }
         }
+        else
+        {
+
+            printf("Enter message:\n");
+            messageKey.message = readString(stdin, -1);
+        }
+
+        printf("Enter key: \n");
+        scanf("%d", &messageKey.key);
+        clearInputBuffer(stdin);
+        messageKey.key %= 26; // same as  messageKey.key = messageKey.key%26;
+        *pointer = messageKey;
+
+
     }
-    else if(c == 'n') {
-        printf("Enter your message\n");
+    else {
+        printf("Enter message:\n");
         messageKey.message = readString(stdin, -1);
         printf("Enter key: ");
         scanf("%d", &messageKey.key);
@@ -140,4 +141,43 @@ struct inputStruct input(struct inputStruct *pointer )
         messageKey.key %= 26; // same as  messageKey.key = messageKey.key%26;
         *pointer = messageKey;
     }
+
+    return 0;
+}
+
+
+int output(int mode ,struct inputStruct *pointer )
+{
+    char c;
+    printf("wrinte in file? (y,n) \n");
+    c = tolower(readOneChar(stdin));
+    if(c == 'y')
+    {
+        printf("Enter the filename \n");
+        pointer->filename =  readString(stdin, -1);
+        if(pointer->message == NULL)
+        {
+            return 1;
+        }
+        writeStringInFile("\n",pointer->filename,"a");
+        writeStringInFile(pointer->message,pointer->filename,"a");
+        free(pointer->message);
+
+    }
+    else
+    {
+        if(mode == 1)
+        {
+            printf("Encrypted message: %s\n", pointer->message);
+            free(pointer->message);
+        }
+        else if(mode == 0)
+        {
+            printf("Decrypted message: %s\n", pointer->message);
+            free(pointer->message);
+        }
+
+    }
+
+    return 0;
 }

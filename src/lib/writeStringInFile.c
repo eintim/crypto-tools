@@ -4,7 +4,7 @@
 
 #include "writeStringInFile.h"
 
-int writeStringInFile(char * string, char * filename char *mode){
+int writeStringInFile(char * string, char * filename, char *mode){
     FILE * file = fopen(filename, mode);
     if (file == NULL){
         printf("Error accured while writing file '%s': %s", filename, strerror(errno));
