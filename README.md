@@ -29,4 +29,4 @@ Its also possible to use a shortcut to an specific ciphers
 make
 ```
 ## License
-Crypto-Tools is under the MIT license. See the [LICENSE] for more information.
+Crypto-Tools is under the unlicense license. See the [LICENSE] for more information.
