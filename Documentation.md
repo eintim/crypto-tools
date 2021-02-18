@@ -16,7 +16,8 @@ stdio.h      | clearInputBuffer.h
 string.h     | readFileInString.h
 stdlib.h     | readString.h
 ctype.h      | readOneChar.h
- -           | writeStringInFile.h
+math.h       | writeStringInFile.h
+erno.h       |
 
 #### Beschreibung Enigma [^2]
 ...
