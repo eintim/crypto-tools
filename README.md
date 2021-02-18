@@ -1,4 +1,5 @@
-  /$$$$$$                                  /$$                    /$$$$$$$$                  /$$          
+```
+/$$$$$$                                  /$$                    /$$$$$$$$                  /$$          
  /$$__  $$                                | $$                   |__  $$__/                 | $$          
 | $$  \__/  /$$$$$$  /$$   /$$  /$$$$$$  /$$$$$$    /$$$$$$         | $$  /$$$$$$   /$$$$$$ | $$  /$$$$$$$
 | $$       /$$__  $$| $$  | $$ /$$__  $$|_  $$_/   /$$__  $$ /$$$$$$| $$ /$$__  $$ /$$__  $$| $$ /$$_____/
@@ -8,7 +9,8 @@
  \______/ |__/       \____  $$| $$____/    \___/   \______/         |__/ \______/  \______/ |__/|_______/ 
                      /$$  | $$| $$                                                                        
                     |  $$$$$$/| $$                                                                        
-                     \______/ |__/                                                                       
+                     \______/ |__/                         
+```
 # Crypto-Tools
 Crypto-Tools is a command-line crypto toolkit. Its goal is to show different cryptographic ciphers to help other students.
 The project got developed by Jonas Eppard, Marcel Alex and Tim Horlacher
