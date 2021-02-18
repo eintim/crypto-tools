@@ -51,16 +51,3 @@ int pMod(int a, int b, int n){
     }
     return x % n;
 }
-
-int checkPrime(int n){
-
-    for (int i = 2; i < (n/2); i++)
-    {
-        if (n%i == 0)
-        {
-            return 1; //Not a Prime Number
-        }
-    }
-    return 0; //Prime Number
-    
-}
