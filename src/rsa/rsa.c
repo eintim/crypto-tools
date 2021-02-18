@@ -8,6 +8,8 @@
 void rsa_gui(){
     char c;
     printf("RSA Menu\n");
+    printf("\nThis RSA only works on each Char to simplify Key generation!\n");
+    printf("Otherwise the entered primes musst be huge\n");
     do {
         printf("-> ");
         c = tolower(readOneChar(stdin));
@@ -130,13 +132,46 @@ void rsa_encrypt_gui(){
 
     char * output = rsa_encrypt(input_str, privateKey, base);
 
-    printf("%s\n", output);
+    printf("Write Output in File?(Y/n) ");
+    c = tolower(readOneChar(stdin));
+    if (c == 'n'){
+        printf("%s\n", output);
+    }
+    else{
+        printf("Enter Filename: ");
+        char * filename = readString(stdin, -1);
+        int result = writeStringInFile(output, filename, "w");
+        if (result == 0){
+            printf("Succesfully written file '%s'", filename);
+        }
+        free(filename);
+    }
     free(output);
     free(input_str);
 }
 
 char * rsa_decrypt(const char * string, const unsigned long long exponent, const unsigned long long mod){
-    return EXIT_FAILURE;
+    int charlen = (int) ceil(log10(mod));
+    char * current = malloc((charlen+1)* sizeof(char));
+
+    int chars_per_encryption = (((int) ceil(log10(mod)))/ 3);
+
+    char * output = malloc(((strlen(string)+1)/charlen)*chars_per_encryption * sizeof(char));
+
+    current[charlen + 1] = '\0';
+    unsigned long long currentInt = 0;
+    int outIndex = 0;
+    for (int i = 0; i < strlen(string); i = i+charlen+1) {
+        memcpy(current, string+i, charlen);
+        currentInt = strtoull(current, NULL, 0);
+        currentInt = pow_mod(currentInt, exponent, mod);
+        for (int j = 0; j < chars_per_encryption; ++j) {
+            output[outIndex] = currentInt / pow(1000, chars_per_encryption-j-1);
+            outIndex++;
+        }
+    }
+    output[outIndex] = '\0';
+    return output;
 }
 
 void rsa_keygeneration_gui(){
@@ -147,23 +182,23 @@ char * rsa_encrypt(const char * string, const unsigned long long exponent, const
     //Get size of on char after encryption
     int charlen = (int) ceil(log10(mod));
 
-    char * str_charlen = malloc((ceil(log10(charlen)) + 4) * sizeof(char));
+    char * str_charlen = malloc((ceil(log10(charlen)) + 5) * sizeof(char));
     sprintf(str_charlen, "%%0%dd ", charlen); //Convert int to Formatstring to allow converion to Int with int leading zeros
 
     int chars_per_encryption = (((int) ceil(log10(mod)))/ 3);
     //Calculate amount of Space needed
     int space;
-    space = (strlen(string) / chars_per_encryption)+1;
+    space = ceil(((float)strlen(string)) / chars_per_encryption);
     space = (charlen+1) * space +1;
 
     //Main Encrypt loop
     char * output = malloc(space* sizeof(char)); //Output String
-    output[space] = '\0';
+    output[space-1] = '\0';
     unsigned long long current; //Current value for encryption
     for (int i = 0; i < strlen(string); i += chars_per_encryption) {
         unsigned long long c = 0;
         for (int j = 0; j < chars_per_encryption; ++j) {
-            c += ((unsigned long long) string[i+j]) * pow(100, chars_per_encryption-j); //Message to be encrypted
+            c += ((unsigned long long) string[i+j]) * pow(1000, chars_per_encryption-j-1); //Message to be encrypted
         }
         current = pow_mod(c, exponent, mod); //Encryption
 
@@ -174,7 +209,7 @@ char * rsa_encrypt(const char * string, const unsigned long long exponent, const
             return EXIT_FAILURE;
         }
     }
-    output[strlen(output)-1] = '\0';
+    output[strlen(output)-1] = '\0'; //Remove ' ' at the end
     free(str_charlen);
     return output;
 }
