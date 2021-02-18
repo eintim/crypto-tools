@@ -35,34 +35,97 @@ void vigenere_encrypt_gui(){
     char* message;
     char* keyphrase;
     printf("Vigenere Encrypt\n");
-    //Todo Read From File
+    do {    //Loop until valid Input
+        //Read if Encrypt file
+        printf("Read Text from file?(y,N) ");
+        char c = tolower(readOneChar(stdin));
 
-    printf("Enter Text:\n");
-    message = readString(stdin, -1);
+        if (tolower(c) == 'y') { //Read input string from file
+            //Read filename
+            printf("Enter filename: ");
+            char *filename;
+            filename = readString(stdin, -1);
+
+            //read File
+            message = readFileInString(filename, -1);
+
+            free(filename);
+        } else {
+            //Input String via commandline
+            printf("Enter Text:\n");
+            message = readString(stdin, -1);
+        }
+    } while (message == NULL);
     printf("Enter Key:\n");
     keyphrase = readString(stdin, -1);
 
     //Encrypt
     vigenere_encrypt(message, keyphrase);
-    
-    printf("%s\n", message);
+
+
+    //Output
+    printf("Write Output to file? (y/N): ");
+    char c = tolower(readOneChar(stdin));
+    if (c == 'y') { //Write in File
+        printf("Input Filename:\n");
+        char *filename = readString(stdin, -1);
+        int error = writeStringInFile(message, filename, "w");
+        if (error) {
+            printf("Something went wrong!");
+        }
+    } else {
+        printf("%s\n", message);  //print output
+    }
+    //free all allocated pointers
+    free(message);
 }
 
 void vigenere_decrypt_gui(){
     char* message;
     char* keyphrase;
     printf("Vigenere Decrypt\n");
-    //Todo Read From File
+    do {    //Loop until valid Input
+        //Read if Encrypt file
+        printf("Read Text from file?(y,N) ");
+        char c = tolower(readOneChar(stdin));
 
-    printf("Enter Text:\n");
-    message = readString(stdin, -1);
+        if (tolower(c) == 'y') { //Read input string from file
+            //Read filename
+            printf("Enter filename: ");
+            char *filename;
+            filename = readString(stdin, -1);
+
+            //read File
+            message = readFileInString(filename, -1);
+
+            free(filename);
+        } else {
+            //Input String via commandline
+            printf("Enter Text:\n");
+            message = readString(stdin, -1);
+        }
+    } while (message == NULL);
     printf("Enter Key:\n");
     keyphrase = readString(stdin, -1);
 
     //Decrypt
     vigenere_decrypt(message, keyphrase);
     
-    printf("%s\n", message);
+    //Output
+    printf("Write Output to file? (y/N): ");
+    char c = tolower(readOneChar(stdin));
+    if (c == 'y') { //Write in File
+        printf("Input Filename:\n");
+        char *filename = readString(stdin, -1);
+        int error = writeStringInFile(message, filename, "w");
+        if (error) {
+            printf("Something went wrong!");
+        }
+    } else {
+        printf("%s\n", message);  //print output
+    }
+    //free all allocated pointers
+    free(message);
 }
 
 void vigenere_encrypt(char* message, char* key){
