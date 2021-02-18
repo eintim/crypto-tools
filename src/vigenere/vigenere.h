@@ -3,6 +3,8 @@
 #include "../lib/clearInputBuffer.h"
 #include "../lib/readString.h"
 #include "../lib/readOneChar.h"
+#include "../lib/readFileInString.h"
+#include "../lib/writeStringInFile.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
