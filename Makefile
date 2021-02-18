@@ -1,5 +1,5 @@
 CC = gcc -Wall
-Output = crypto-toolssss.exe
+Output = crypto-tools
 Obj_files =  main.o caesar.o enigma.o vigenere.o clearInputBuffer.o readFileInString.o readOneChar.o readString.o writeStringInFile.o
 
 $(Output): $(Obj_files)
