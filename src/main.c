@@ -7,10 +7,10 @@ int main(int argc, char *argv[]){
         switch (o)
         {
             case 'e':
-                enigma_gui();
+               // enigma_gui();
                 break;
             case 'v':
-                vigenere_gui();
+               // vigenere_gui();
                 break;
             case 'c':
                 caesar_gui();
@@ -44,10 +44,10 @@ int main(int argc, char *argv[]){
         c = tolower(readOneChar(stdin));
         switch (c) {
             case 'e':
-                enigma_gui();
+          //      enigma_gui();
                 break;
             case 'v':
-                vigenere_gui();
+             //   vigenere_gui();
                 break;
             case 'c':
                 caesar_gui();
