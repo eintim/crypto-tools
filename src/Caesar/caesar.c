@@ -1,4 +1,7 @@
 #include "caesar.h"
+
+
+
 void caesar_gui()
 {
     char c;
@@ -29,6 +32,8 @@ void caesar_gui()
         }
     }while(c!='q');
 }
+
+
 void caesar_encrypt()
 {
 
@@ -53,14 +58,12 @@ void caesar_encrypt()
 
             }
         }
-        if (output(mode, pointer) == 0)
-        {
-            printf("Thanks!\n");
-        }
+        output(mode, pointer);
 
     }
 
 }
+
 void caesar_decrypt() {
     int mode = 1;
     struct inputStruct inputv;
@@ -85,21 +88,26 @@ void caesar_decrypt() {
             }
 
         }
-        if (output(mode, pointer) == 0)
-        {
-            printf("Thanks!\n");
-        }
+        output(mode, pointer);
 
 
     }
 }
-int input(struct inputStruct *pointer ){
+
+int input(struct inputStruct *pointer )
+{
     char c;
+
     struct inputStruct messageKey;
+    printf("work with files? (y,N) ");
+    c = tolower(readOneChar(stdin));
+    if (c == 'y')
+    {
 
         printf("read from file? (y,N) ");
         c = tolower(readOneChar(stdin));
-        if(c == 'y'){
+        if(c == 'y')
+        {
 
             printf("Enter filename:\n");
             messageKey.filename = readString(stdin, -1);
@@ -109,45 +117,67 @@ int input(struct inputStruct *pointer ){
                 return 1;
             }
         }
-        else{
+        else
+        {
 
-            printf("Enter message: \n");
+            printf("Enter message:\n");
             messageKey.message = readString(stdin, -1);
         }
+
         printf("Enter key: \n");
         scanf("%d", &messageKey.key);
         clearInputBuffer(stdin);
         messageKey.key %= 26; // same as  messageKey.key = messageKey.key%26;
         *pointer = messageKey;
-         return 0;
+
+
+    }
+    else {
+        printf("Enter message:\n");
+        messageKey.message = readString(stdin, -1);
+        printf("Enter key: ");
+        scanf("%d", &messageKey.key);
+        clearInputBuffer(stdin);
+        messageKey.key %= 26; // same as  messageKey.key = messageKey.key%26;
+        *pointer = messageKey;
+    }
+
+    return 0;
 }
-int output(int mode ,struct inputStruct *pointer)
+
+
+int output(int mode ,struct inputStruct *pointer )
 {
     char c;
     printf("write in file? (y,n) \n");
     c = tolower(readOneChar(stdin));
-    if(c == 'y'){
+    if(c == 'y')
+    {
         printf("Enter the filename \n");
         pointer->filename =  readString(stdin, -1);
-        if(pointer->message == NULL){
+        if(pointer->message == NULL)
+        {
             return 1;
         }
-
         writeStringInFile("\n",pointer->filename,"a");
         writeStringInFile(pointer->message,pointer->filename,"a");
         free(pointer->message);
+
     }
-    else{
+    else
+    {
         if(mode == 1)
         {
             printf("Encrypted message: %s\n", pointer->message);
             free(pointer->message);
         }
-        else if(mode == 0){
+        else if(mode == 0)
+        {
             printf("Decrypted message: %s\n", pointer->message);
             free(pointer->message);
         }
 
     }
+
     return 0;
 }
