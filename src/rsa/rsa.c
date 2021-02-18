@@ -11,7 +11,7 @@ void rsa_gui(){
     printf("\nThis RSA only works on each Char to simplify Key generation!\n");
     printf("Otherwise the entered primes musst be huge\n");
     do {
-        printf("-> ");
+        printf("RSA -> ");
         c = tolower(readOneChar(stdin));
         switch (c) {
             case 'd':
@@ -170,9 +170,9 @@ char * rsa_decrypt(const char * string, const unsigned long long exponent, const
 
     int chars_per_encryption = (((int) ceil(log10(mod)))/ 3);
 
-    char * output = malloc(((strlen(string)+1)/charlen)*chars_per_encryption * sizeof(char));
+    char * output = malloc(((strlen(string)+1)/(charlen+1))*chars_per_encryption * sizeof(char));
 
-    current[charlen + 1] = '\0';
+    current[charlen] = '\0';
     unsigned long long currentInt = 0;
     int outIndex = 0;
     for (int i = 0; i < strlen(string); i = i+charlen+1) {
@@ -181,6 +181,7 @@ char * rsa_decrypt(const char * string, const unsigned long long exponent, const
         currentInt = pow_mod(currentInt, exponent, mod);
         for (int j = 0; j < chars_per_encryption; ++j) {
             output[outIndex] = currentInt / pow(1000, chars_per_encryption-j-1);
+            currentInt /= pow(1000, chars_per_encryption-j-1);
             outIndex++;
         }
     }
@@ -189,7 +190,41 @@ char * rsa_decrypt(const char * string, const unsigned long long exponent, const
 }
 
 void rsa_keygeneration_gui(){
+    printf("Enter two Prime numbers (separated by space):\n");
+    char * num_str = readString(stdin, -1);
+    unsigned long long int num1 = strtoull(num_str, &num_str, 0);
+    unsigned long long int num2 = strtoull(num_str+1, NULL, 0);
+    printf("Calculation Keypair this might take a while...\n");
+    rsa_calculate_keypair(num1, num2);
+}
 
+void rsa_calculate_keypair(unsigned long long int p, unsigned long long int q){
+    unsigned long long int base = p*q;
+    unsigned long long int r = (p-1)*(q-1);
+    printf("Base: %llu\n", base);
+    unsigned long long int public;
+    unsigned long long int private;
+    for (int i = 1; i < 6; ++i) {
+        rsa_get_factors(i*r+1, &public, &private);
+        printf("Possible Key Choices %d/5: \n", i);
+        printf("%llu %llu\n", public, private);
+    }
+    printf("Chooce one of the numbers of the Key Choices as Public and one as Private and use %llu as Base.\n", base);
+    return;
+}
+
+void rsa_get_factors(unsigned long long int number, unsigned long long int * f1, unsigned long long int * f2){
+    for (int i = 1; i < number; ++i) {
+        if (number%i==0){
+            if ((number/i)<=i){
+                *f1 = number/i;
+                *f2 = i;
+                return;
+            }
+        }
+    }
+    *f1 = number;
+    *f2 = 1;
 }
 
 char * rsa_encrypt(const char * string, const unsigned long long exponent, const unsigned long long mod){ //manipulates string
@@ -211,13 +246,13 @@ char * rsa_encrypt(const char * string, const unsigned long long exponent, const
     unsigned long long current; //Current value for encryption
     for (int i = 0; i < strlen(string); i += chars_per_encryption) {
         unsigned long long c = 0;
-        for (int j = 0; j < chars_per_encryption; ++j) {
+        for (int j = 0; j < chars_per_encryption && i+j<strlen(string); ++j) {
             c += ((unsigned long long) string[i+j]) * pow(1000, chars_per_encryption-j-1); //Message to be encrypted
         }
         current = pow_mod(c, exponent, mod); //Encryption
 
         int len = 0;
-        len = sprintf(output+i*(charlen+1), str_charlen, current); //Convvert int to String
+        len = sprintf(output+i*(charlen+1)/chars_per_encryption, str_charlen, current); //Convvert int to String
         if (len != (charlen+1)){
             printf("Error while encoding '%c' got %d", string[i], current);
             return EXIT_FAILURE;
