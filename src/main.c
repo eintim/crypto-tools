@@ -13,7 +13,7 @@ int main(int argc, char *argv[]){
                 vigenere_gui();
                 break;
             case 'c':
-                //TODO caeser_gui();
+                caesar_gui();
                 break;
             default:
                 break;
@@ -50,7 +50,7 @@ int main(int argc, char *argv[]){
                 vigenere_gui();
                 break;
             case 'c':
-                //TODO caeser_gui();
+                caesar_gui();
                 break;
             case 'q':
                 printf("Leaving Crypto Tools...\n");
