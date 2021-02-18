@@ -1,6 +1,7 @@
 #ifndef SRC_HEADERS_H
 #define SRC_HEADERS_H 1
 
+#include "lib/clearInputBuffer.h"
 #include "lib/readOneChar.h"
 
 //Crypto Libarys

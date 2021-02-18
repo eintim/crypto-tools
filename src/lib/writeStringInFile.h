@@ -7,5 +7,5 @@
 #include <stdio.h>
 #include <errno.h>
 #include <string.h>
-int writeStringInFile(char * string, char * filename);
+int writeStringInFile(char * string, char * filename ,char * mode);
 #endif //SRC_WRITESTRINGINFILE_H
