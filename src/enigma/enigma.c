@@ -71,7 +71,7 @@ void enigma_gui() {
     if (c == 'y') { //Write in File
         printf("Input Filename:\n");
         char *filename = readString(stdin, -1);
-        int error = writeStringInFile(input_str, filename);
+        int error = writeStringInFile(input_str, filename, "w");
         if (error) {
             printf("Something went wrong!");
         }
