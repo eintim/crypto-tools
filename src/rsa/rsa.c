@@ -83,8 +83,22 @@ void rsa_decrypt_gui(){
     baseStr = readString(stdin, -1);
     long int base = strtol(baseStr, NULL, 0); //Transform from String to int
 
-    rsa_decrypt(input_str, privateKey, base);
-
+    char * output = rsa_decrypt(input_str, privateKey, base);
+    printf("Write Output in File?(Y/n) ");
+    c = tolower(readOneChar(stdin));
+    if (c == 'n'){
+        printf("%s\n", output);
+    }
+    else{
+        printf("Enter Filename: ");
+        char * filename = readString(stdin, -1);
+        int result = writeStringInFile(output, filename, "w");
+        if (result == 0){
+            printf("Succesfully written file '%s'", filename);
+        }
+        free(filename);
+    }
+    free(output);
     free(input_str);
 }
 
@@ -163,7 +177,7 @@ char * rsa_decrypt(const char * string, const unsigned long long exponent, const
     int outIndex = 0;
     for (int i = 0; i < strlen(string); i = i+charlen+1) {
         memcpy(current, string+i, charlen);
-        currentInt = strtoull(current, NULL, 0);
+        currentInt = strtoull(current, NULL, 10);
         currentInt = pow_mod(currentInt, exponent, mod);
         for (int j = 0; j < chars_per_encryption; ++j) {
             output[outIndex] = currentInt / pow(1000, chars_per_encryption-j-1);
