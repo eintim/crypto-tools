@@ -75,6 +75,7 @@ void enigma_gui() {
         if (error) {
             printf("Something went wrong!");
         }
+        free(filename);
     } else {
         printf("%s\n", input_str);  //print output
     }
