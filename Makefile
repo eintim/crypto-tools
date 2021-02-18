@@ -1,6 +1,6 @@
 CC = gcc -Wall
 Output = crypto-tools
-Obj_files =  main.o caesar.o enigma.o vigenere.o clearInputBuffer.o readFileInString.o readOneChar.o readString.o writeStringInFile.o
+Obj_files =  main.o caesar.o enigma.o vigenere.o diffiehellman.o clearInputBuffer.o readFileInString.o readOneChar.o readString.o writeStringInFile.o
 
 $(Output): $(Obj_files)
 		$(CC) -o $@ $^
@@ -12,6 +12,7 @@ main.o : ./src/main.c
 caesar.o : ./src/caesar/caesar.c
 enigma.o : ./src/enigma/enigma.c
 vigenere.o : ./src/vigenere/vigenere.c
+diffiehellman.o : ./src/diffiehellman/diffiehellman.c
 
 clearInputBuffer.o : ./src/lib/clearInputBuffer.c
 readFileInString.o : ./src/lib/readFileInString.c
