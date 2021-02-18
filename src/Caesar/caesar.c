@@ -97,7 +97,7 @@ int input(struct inputStruct *pointer ){
     char c;
     struct inputStruct messageKey;
 
-    printf("read from file? (y,N) ");
+    printf("Read from file? (y,N) ");
     c = tolower(readOneChar(stdin));
     if(c == 'y'){
 
@@ -114,20 +114,21 @@ int input(struct inputStruct *pointer ){
         printf("Enter message: \n");
         messageKey.message = readString(stdin, -1);
     }
-    printf("Enter key: \n");
+    printf("Enter key (int): \n");
     scanf("%d", &messageKey.key);
     clearInputBuffer(stdin);
     messageKey.key %= 26; // same as  messageKey.key = messageKey.key%26;
     *pointer = messageKey;
     return 0;
 }
+
 int output(int mode ,struct inputStruct *pointer)
 {
     char c;
-    printf("write in file? (y,n) \n");
+    printf("Write in file? (y,N) ");
     c = tolower(readOneChar(stdin));
     if(c == 'y'){
-        printf("Enter the filename \n");
+        printf("Enter the filename: \n");
         pointer->filename =  readString(stdin, -1);
         if(pointer->message == NULL){
             return 1;
