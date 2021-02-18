@@ -7,6 +7,7 @@
 #include "enigma/enigma.h"
 #include "caesar/caesar.h"
 #include "vigenere/vigenere.h"
+#include "diffiehellman/diffiehellman.h"
 
 #include <stdio.h>
 #endif //SRC_HEADERS_H
