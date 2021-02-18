@@ -124,7 +124,7 @@ int input(struct inputStruct *pointer ){
 int output(int mode ,struct inputStruct *pointer)
 {
     char c;
-    printf("wrinte in file? (y,n) \n");
+    printf("write in file? (y,n) \n");
     c = tolower(readOneChar(stdin));
     if(c == 'y'){
         printf("Enter the filename \n");
