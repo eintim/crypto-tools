@@ -39,23 +39,47 @@ Die Entschlüsselung funktioniert exakt gleich, da das Verfahren der Enigma Syme
 
 ### [Vigenere]
 #### Benutzer-Beschreibung
-Das Unterprogramm basiert auf der Gleichnamigen  Vigenere-Chiffre-Verschlüsselung.\
-Zuerst wird abgefragt ob der Benutzer eine Nachricht verschlüsseln oder entschlüsseln will,\
-danach wird dem Benutzer  die Möglichkeit gegeben den zu Ver/entschlüsselnden Text aus einer Datei zu lesen oder selbst einzugeben.\
-Daraufhin wird der Buchstaben zum ver/entschlüsseln abgefragt.\
-Der Output wird je nach Angabe des Benutzers in einer Datei gespeichert oder in der Konsole ausgegeben.
-
+Bei der Vigenère-Verschlüsselung handelt es sich um ein Substitutionsverfahren.\
+Dazu wird der Klartext in Einzelzeichen zerlegt und durch Geheimtextzeichen substituiert.\
+Die Geheimtextzeichen werden durch ein Kennwort über das Vigenère-Quadrat ausgewählt.\
+Dabei hebt sich Vigenere von einer monoalphabetischen Substitutionsmethode wie Caesar ab,\
+da mehrere Alphabete verwendet werden.
+##### Verwendung
+Das Programm kann im Hauptmenü durch die Eingabe 'v' aufgerufen werden.\
+Daraufhin wird man dazu aufgefordert zwischen Ent-/Verschlüsslung ('d' oder 'e') zu wählen.\
+Anschließend ist die zu ent-/verschlüssende Nachricht zu einzugeben.\
+Ggf. kann diese Nachricht auch aus einer Datei eingelesen werden.\
+Danach wird der Schlüssel abgefragt. Dabei besteht der Schlüssel aus einem beliebig langen Wort.\
+Allerdings werden nur Buchstaben beachtet. (Groß/Kleinschreibung spielt keine Rolle)\
+Danach wird das ent-/verschlüssende Wort ausgegeben.
 #### Entwickler-Dokumentation
+Das Programm liest die Eingaben über eine der Libary Funktionen ein. Nachricht und Schlüssel werden jeweils in Arrays\
+gespeichert um leichter darauf zugreifen zu können. Danach werden die einzelnen Buchstaben durch den errechnetet Geheimbuchstabe substituiert.\
+Hierbei wird nach jedem verschüsselten Buchstaben auch ein Zeichen im Schlüssel weitergesprungen.\
+Sollte dabei der Schlüssel vor der Nachricht zuende sein wird der Zähler des Schlüssel wieder resetet.
 
 ### [DH-Handshake]
-### Benutzer-Beschreibung
+#### Benutzer-Beschreibung
+Der Diffie-Hellmann Key Exchange ermöglicht zwei Kommunikationspaartnern über eine öffentliche/abhörbare Leitung\
+einen gemeinsamen geheimen Schlüssel zu vereinbaren. Verschiedene Varianten dieses Verfahrens\
+werden heute für Sicherheitsprotokolle im Internet verwendet.\
 Zuerst werde zwei öffentliche Schlüssel abgefragt, dann kann man zwei geheime Schlüssel festlegen.\
 Anhand der öffentlichen Schlüssel werden neue Schlüsse errechnet welche, \
-den Benutzern weitergegeben werden,
-ohne den geheimen Schlüssel des jeweils anderen zu kennen.
-
-
+den Benutzern weitergegeben werden, ohne den geheimen Schlüssel des jeweils anderen zu kennen.
+##### Verwendung
+Im Programm wird der Benutzer dazu aufgefordert 4 Zahlenwerte festzulegen.\
+Öffentliche Werte: ```P(Primzahl)``` und ```G(G < P)```\
+Geheime Werte: ```a(a < P)``` und ```b(b < P)```\
+Hierbei gilt zu beachtet das es keine Input-Validation gibt!\
+Danach wird für jede Seite (a und b) ein öffentlicher Schlüssel berechnet.\
+Dieser Schlüssel wird dann den jeweils anderen "zugeschickt".\
+Mithilfe dieses Schlüssel kann nun jede Partei einen geheimen Schlüssel errechnen\
+und dieser wird dann Ausgegeben. Aufgrund des Diffie-Hellmanns Verfahren haben beide Parteien nun\
+den selben geheimen Schlüssel.\
 #### Entwickler-Dokumentation
+Das Programm liest die Eingaben aus dem Stream stdin nacheinander ein und berechnet daraus die passenden Schlüssel.\
+Die Funktion pMod ist für die Berechnung der Schlüssel zuständig. Dahinter steckt die Formel ```res=a^b mod n```\
+Um überläufe zu vermeiden wird intern der Datentyp ```long long``` verwendet.
 
 ### [Caesar]
 #### Benutzer-Beschreibung
