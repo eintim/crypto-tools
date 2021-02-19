@@ -8,8 +8,7 @@
 void rsa_gui(){
     char c;
     printf("RSA Menu\n");
-    printf("\nThis RSA only works on each Char to simplify Key generation!\n");
-    printf("Otherwise the entered primes musst be huge\n");
+    rsa_print_help();
     do {
         printf("RSA -> ");
         c = tolower(readOneChar(stdin));
@@ -27,18 +26,22 @@ void rsa_gui(){
                 printf("Leaving RSA...\n");
                 break;
             case 'h':
-                printf("Help:\n");
-                printf("\t [d]ecrypt \t- decrypt some data\n");
-                printf("\t [e]ncrypt \t- encrypt some data\n");
-                printf("\t [g]enerate \t- generate Keypair\n");
-                printf("\t [h]elp \t- show this menu\n");
-                printf("\t [q]uit \t- leave this application\n");
+                rsa_print_help();
                 break;
             default:
                 printf("Enter Valid char (h/H) for Help!\n");
                 break;
         }
     }while(c!='q');
+}
+
+void rsa_print_help(){
+    printf("Help:\n");
+    printf("\t [d]ecrypt \t- decrypt some data\n");
+    printf("\t [e]ncrypt \t- encrypt some data\n");
+    printf("\t [g]enerate \t- generate Keypair\n");
+    printf("\t [h]elp \t- show this menu\n");
+    printf("\t [q]uit \t- leave this application\n");
 }
 
 void rsa_decrypt_gui(){
@@ -51,10 +54,10 @@ void rsa_decrypt_gui(){
     char *input_str = NULL;   //String for Data to be encrypted
     do {    //Loop until valid Input
         //Read if Encrypt file
-        printf("Read Text from file?(y,N) ");
+        printf("Read Text from file?(Y,n) ");
         c = tolower(readOneChar(stdin));
 
-        if (tolower(c) == 'y') { //Read input string from file
+        if (tolower(c) != 'n') { //Read input string from file
             //Read filename
             printf("Enter filename: ");
             char *filename;
@@ -84,9 +87,9 @@ void rsa_decrypt_gui(){
     long int base = strtol(baseStr, NULL, 0); //Transform from String to int
 
     char * output = rsa_decrypt(input_str, privateKey, base);
-    printf("Write Output in File?(Y/n) ");
+    printf("Write Output in File?(y/N) ");
     c = tolower(readOneChar(stdin));
-    if (c == 'n'){
+    if (c == 'y'){
         printf("%s\n", output);
     }
     else{
@@ -170,7 +173,7 @@ char * rsa_decrypt(const char * string, const unsigned long long exponent, const
 
     int chars_per_encryption = (((int) ceil(log10(mod)))/ 3);
 
-    char * output = malloc(((strlen(string)+1)/(charlen+1))*chars_per_encryption * sizeof(char));
+    char * output = malloc(((strlen(string)+1)/(charlen+1)+1)*chars_per_encryption * sizeof(char));
 
     current[charlen] = '\0';
     unsigned long long currentInt = 0;
@@ -180,8 +183,7 @@ char * rsa_decrypt(const char * string, const unsigned long long exponent, const
         currentInt = strtoull(current, NULL, 10);
         currentInt = pow_mod(currentInt, exponent, mod);
         for (int j = 0; j < chars_per_encryption; ++j) {
-            output[outIndex] = currentInt / pow(1000, chars_per_encryption-j-1);
-            currentInt /= pow(1000, chars_per_encryption-j-1);
+            output[outIndex] = (currentInt / pow_mod(1000, chars_per_encryption-j-1, ULLONG_MAX)) % 1000;
             outIndex++;
         }
     }
@@ -271,11 +273,11 @@ unsigned long long pow_mod(const unsigned long long base, const unsigned long lo
         return (base%mod);
     }
     else if (exponent % 2 == 0){
-        int result = pow_mod(base, exponent / 2, mod);
+        unsigned long long result = pow_mod(base, exponent / 2, mod);
         return ((result*result)%mod);
     }
     else{
-        int result = pow_mod(base, (exponent-1) / 2, mod);
+        unsigned long long result = pow_mod(base, (exponent-1) / 2, mod);
         return ((((result*result)%mod)*base)%mod);
     }
 }

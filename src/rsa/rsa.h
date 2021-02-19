@@ -18,6 +18,7 @@ void rsa_gui();
 void rsa_decrypt_gui();
 void rsa_encrypt_gui();
 void rsa_keygeneration_gui();
+void rsa_print_help();
 void rsa_calculate_keypair(unsigned long long int p, unsigned long long int q);
 void rsa_get_factors(unsigned long long int number, unsigned long long int * f1, unsigned long long int * f2);
 char * rsa_encrypt(const char * string, const unsigned long long exponent, const unsigned long long mod);
