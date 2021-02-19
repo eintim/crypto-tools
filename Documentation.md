@@ -9,8 +9,8 @@
 
 
 
-##### Benutzten Libraries: 
-Vordefiniert | Sesbstgeschrieben[^1]
+### Benutzten Libraries: 
+Vordefiniert | [Sesbstgeschrieben]
 ------------ | -----------------
 stdio.h      | clearInputBuffer.h
 string.h     | readFileInString.h
@@ -19,46 +19,53 @@ ctype.h      | readOneChar.h
 math.h       | writeStringInFile.h
 erno.h       |
 
-#### Benutzer-Beschreibung Enigma 
-> Das Unterprogramm basiert auf der Gleichnamigen Enigma Maschine des II Weltkrieges.\
+###[Enigma]
+> * **Benutzer-Beschreibung**  
+>  Das Unterprogramm basiert auf der Gleichnamigen Enigma Maschine des II Weltkrieges.\
 > Der Benutzer hat die Möglichkeit aus eine Datei zu lesen oder den Text selbst einzugeben,\
 > danach wird der entsprechende Schlüssel eingelesen und der Input mit dem Enigma-Prinzipe Ver/entschlüsselt.\
 > Der Output wird je nach Angabe des Benutzers in einer Datei gespeichert oder in der Konsole ausgegeben. 
+>   
+> 
+> * **Entwickler-Dokumentation**
 
-#### Entwickler-Dokumentation Enigma [^2]
->
 
-#### Benutzer-Beschreibung Vigenere 
+###[Vigenere]
+> * **Benutzer-Beschreibung**  
 > Das Unterprogramm basiert auf der Gleichnamigen  Vigenere-Chiffre-Verschlüsselung.\
 > Zuerst wird abgefragt ob der Benutzer eine Nachricht verschlüsseln oder entschlüsseln will,\
 > danach wird dem Benutzer  die Möglichkeit gegeben den zu Ver/entschlüsselnden Text aus einer Datei zu lesen oder selbst einzugeben.\
 > Daraufhin wird der Buchstaben zum ver/entschlüsseln abgefragt.\
 > Der Output wird je nach Angabe des Benutzers in einer Datei gespeichert oder in der Konsole ausgegeben.
-
-#### Entwickler-Dokumentation Vigenere [^3]
 >
-
-#### Benutzer-Beschreibung DH-Handshake 
+> 
+> * **Entwickler-Dokumentation**
+>
+###[DH-Handshake]
+> * **Benutzer-Beschreibung**  
 > Zuerst werde zwei öffentliche Schlüssel abgefragt, dann kann man zwei geheime Schlüssel festlegen.\
-> Anhand der öffentlichen Schlüssel werden neue Schlüsse errechnet welche den Benutzern weitergegeben werden,
+> Anhand der öffentlichen Schlüssel werden neue Schlüsse errechnet welche, \
+> den Benutzern weitergegeben werden,
 > ohne den geheimen Schlüssel des jeweils anderen zu kennen.
-
-#### Entwickler-Dokumentation DH-Handshake [^4]
 >
-
-#### Benutzer-Beschreibung Caesar 
+>
+> * **Entwickler-Dokumentation**
+>
+###[Caesar]
+> * **Benutzer-Beschreibung**  
 > Das Unterprogramm Caesar basiert auf der Gleichnamigen Caesar-Verschlüsselung.\
 > Zuerst wird abgefragt ob der Benutzer eine Nachricht verschlüsseln oder entschlüsseln will,\
 > danach wird dem Benutzer  die Möglichkeit gegeben den zu Ver/entschlüsselnden Text aus einer Datei zu lesen oder selbst einzugeben.\
 > Daraufhin wird die Zahl zum ver/entschlüsseln abgefragt.\
 > Der Output wird je nach Angabe des Benutzers in einer Datei gespeichert oder in der Konsole ausgegeben.
-
-#### Entwickler-Dokumentation Caesar [^5]
+>
+> 
+> * **Benutzer-Beschreibung**
 >
 >
->[^1]:https://github.com/eintim/crypto-tools/tree/main/src/lib
->[^2]:https://github.com/eintim/crypto-tools/blob/main/src/enigma/enigma.c
->[^3]:https://github.com/eintim/crypto-tools/blob/main/src/vigenere/vigenere.c
->[^4]:https://github.com/eintim/crypto-tools/blob/main/src/diffiehellman/diffiehellman.c
->[^5]:https://github.com/eintim/crypto-tools/blob/main/src/caesar/caesar.c
+>[Sesbstgeschrieben]:https://github.com/eintim/crypto-tools/tree/main/src/lib
+>[Enigma]:https://github.com/eintim/crypto-tools/blob/main/src/enigma/enigma.c
+>[Vigenere]:https://github.com/eintim/crypto-tools/blob/main/src/vigenere/vigenere.c
+>[DH-Handshake]:https://github.com/eintim/crypto-tools/blob/main/src/diffiehellman/diffiehellman.c
+>[Caesar]:https://github.com/eintim/crypto-tools/blob/main/src/caesar/caesar.c
         
