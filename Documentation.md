@@ -59,7 +59,7 @@ Hierbei wird nach jedem verschüsselten Buchstaben auch ein Zeichen im Schlüsse
 Sollte dabei der Schlüssel vor der Nachricht zuende sein wird der Zähler des Schlüssel wieder resetet.
 
 ### [DH-Handshake]
-### Benutzer-Beschreibung
+#### Benutzer-Beschreibung
 Der Diffie-Hellmann Key Exchange ermöglicht zwei Kommunikationspaartnern über eine öffentliche/abhörbare Leitung\
 einen gemeinsamen geheimen Schlüssel zu vereinbaren. Verschiedene Varianten dieses Verfahrens\
 werden heute für Sicherheitsprotokolle im Internet verwendet.\
@@ -68,8 +68,8 @@ Anhand der öffentlichen Schlüssel werden neue Schlüsse errechnet welche, \
 den Benutzern weitergegeben werden, ohne den geheimen Schlüssel des jeweils anderen zu kennen.
 ##### Verwendung
 Im Programm wird der Benutzer dazu aufgefordert 4 Zahlenwerte festzulegen.\
-Öffentliche Werte: P(Primzahl) und G (G < P)\
-Geheime Werte: a(a < P) und b(b < P)\
+```Öffentliche Werte: P(Primzahl) und G (G < P)
+Geheime Werte: a(a < P) und b(b < P)```\
 Hierbei gilt zu beachtet das es keine Input-Validation gibt!\
 Danach wird für jede Seite (a und b) ein öffentlicher Schlüssel berechnet.\
 Dieser Schlüssel wird dann den jeweils anderen "zugeschickt".\
@@ -78,8 +78,8 @@ und dieser wird dann Ausgegeben. Aufgrund des Diffie-Hellmanns Verfahren haben b
 den selben geheimen Schlüssel.\
 #### Entwickler-Dokumentation
 Das Programm liest die Eingaben aus dem Stream stdin nacheinander ein und berechnet daraus die passenden Schlüssel.\
-Die Funktion pMod ist für die Berechnung der Schlüssel zuständig. Dahinter steckt die Formel res=a^b mod n\
-Um überläufe zu vermeiden wird intern der Datentyp long long verwendet\
+Die Funktion pMod ist für die Berechnung der Schlüssel zuständig. Dahinter steckt die Formel ```res=a^b mod n```\
+Um überläufe zu vermeiden wird intern der Datentyp ```long long``` verwendet\
 
 ### [Caesar]
 #### Benutzer-Beschreibung
