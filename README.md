@@ -23,7 +23,7 @@ Here are some feature highlights:
 - **Vigenere**: Encrypt like Caesar, but fancier
 
 ## Download
-Executables are availible [here](https://github.com/eintim/crypto-tools/releases) on Github.
+Executables are available [here](https://github.com/eintim/crypto-tools/releases) on Github.
 
 ## Usage
 Simply start the executable.
