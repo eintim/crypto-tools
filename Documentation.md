@@ -1,7 +1,7 @@
 # **Crypto-tools**
 ###### *von Jonas Eppard, Tim Horlacher und Marcel Alex.*
 
-Crypto-Tools ist ein Programm, dass verschiede Cryptographische Schiffren beherscht.
+Crypto-Tools ist ein Programm, dass verschiede Cryptographische Verfahren beherscht.
 ## Crypto-tools:
 * #### Caesar
 * #### DH-Handshake
@@ -20,6 +20,24 @@ ctype.h      | readOneChar.h
 math.h       | writeStringInFile.h
 erno.h       |
 
+### [Caesar]
+#### Benutzer-Beschreibung
+Das Unterprogramm Caesar basiert auf der Gleichnamigen Caesar-Verschlüsselung.\
+Zuerst wird abgefragt ob der Benutzer eine Nachricht verschlüsseln oder entschlüsseln will,\
+danach wird dem Benutzer  die Möglichkeit gegeben den zu Ver/entschlüsselnden Text aus einer Datei zu lesen oder selbst einzugeben.\
+Daraufhin wird die Zahl zum ver/entschlüsseln abgefragt.\
+Der Output wird je nach Angabe des Benutzers in einer Datei gespeichert oder in der Konsole ausgegeben.
+
+#### Benutzer-Beschreibung
+
+### [DH-Handshake]
+### Benutzer-Beschreibung
+Zuerst werde zwei öffentliche Schlüssel abgefragt, dann kann man zwei geheime Schlüssel festlegen.\
+Anhand der öffentlichen Schlüssel werden neue Schlüsse errechnet welche, \
+den Benutzern weitergegeben werden,
+ohne den geheimen Schlüssel des jeweils anderen zu kennen.
+
+#### Entwickler-Dokumentation
 
 ### [Enigma]
 #### Benutzer-Beschreibung
@@ -41,6 +59,10 @@ das die Verdrahtung eines Rotors in einem Array gespeichert ist und so das neue 
 des Aktuellen Ergibnisses steht. Hierbei ist zu beachten, dass nach der UKW der Index der Aktuellen Zahl benötigt wird.
 Hierzu wird durch die Liste iteriert bis das Element gefunden ist.
 
+### [RSA]
+#### Benutzer-Beschreibung
+
+#### Entwickler-Dokumentation
 
 ### [Vigenere]
 #### Benutzer-Beschreibung
@@ -52,29 +74,13 @@ Der Output wird je nach Angabe des Benutzers in einer Datei gespeichert oder in 
 
 #### Entwickler-Dokumentation
 
-### [DH-Handshake]
-### Benutzer-Beschreibung
-Zuerst werde zwei öffentliche Schlüssel abgefragt, dann kann man zwei geheime Schlüssel festlegen.\
-Anhand der öffentlichen Schlüssel werden neue Schlüsse errechnet welche, \
-den Benutzern weitergegeben werden,
-ohne den geheimen Schlüssel des jeweils anderen zu kennen.
 
 
-#### Entwickler-Dokumentation
 
-### [Caesar]
-#### Benutzer-Beschreibung
-Das Unterprogramm Caesar basiert auf der Gleichnamigen Caesar-Verschlüsselung.\
-Zuerst wird abgefragt ob der Benutzer eine Nachricht verschlüsseln oder entschlüsseln will,\
-danach wird dem Benutzer  die Möglichkeit gegeben den zu Ver/entschlüsselnden Text aus einer Datei zu lesen oder selbst einzugeben.\
-Daraufhin wird die Zahl zum ver/entschlüsseln abgefragt.\
-Der Output wird je nach Angabe des Benutzers in einer Datei gespeichert oder in der Konsole ausgegeben.
-
-#### Benutzer-Beschreibung
 
 [Selbstgeschrieben]:https://github.com/eintim/crypto-tools/tree/main/src/lib
-[Enigma]:https://github.com/eintim/crypto-tools/blob/main/src/enigma/enigma.c
-[Vigenere]:https://github.com/eintim/crypto-tools/blob/main/src/vigenere/vigenere.c
-[DH-Handshake]:https://github.com/eintim/crypto-tools/blob/main/src/diffiehellman/diffiehellman.c
-[Caesar]:https://github.com/eintim/crypto-tools/blob/main/src/caesar/caesar.c
-        
+[Enigma]:https://github.com/eintim/crypto-tools/blob/main/src/enigma
+[Vigenere]:https://github.com/eintim/crypto-tools/blob/main/src/vigenere
+[DH-Handshake]:https://github.com/eintim/crypto-tools/blob/main/src/diffiehellman
+[Caesar]:https://github.com/eintim/crypto-tools/blob/main/src/caesar
+[RSA]:https://github.com/eintim/crypto-tools/tree/main/src/rsa
