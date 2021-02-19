@@ -32,9 +32,14 @@ Daraufhin wird der Schlüssel eingegeben. Ein Schlüssel der Enigma Maschiene be
 welche die verwendeten Rotoren angeben, 3 Buchstaben welche die Anfangsstellung der Rotoren angibt
 und einer Liste an Buchstaben welche zunächst ersetzt werden, bevor die Buchstaben durch die Walzen laufen.
 Ein Schlüssel hat somit folgendes Format: ```III c c c *(cc )``` mit ```I : Int``` und ```c: Char```.
-Die Entschlüsselung funktioniert exakt gleich, da das Verfahren der Enigma Symetrisch ist.
+Die Entschlüsselung funktioniert exakt gleich, da das Verfahren der Enigma Symetrisch ist.\
+*Es ist zu Beachten das es **KEINE** Input-Valifation gibt!*
 #### Entwickler-Dokumentation
-//TODO
+Das Enigma Programm liest seine Eingaben mithilfe der Libary Funktionen ein. Die Eigenschaften der Schlüssel werden in Arrays gespeichert um leichtes zugreifen zu ermöglichen.
+Die Vertauschung der Buchstaben ist durch einen Lookup-table implementiert. Die Verschlüsselung selber beruht darauf
+das die Verdrahtung eines Rotors in einem Array gespeichert ist und so das neue Zwischenergebnis einfach an dem Index
+des Aktuellen Ergibnisses steht. Hierbei ist zu beachten, dass nach der UKW der Index der Aktuellen Zahl benötigt wird.
+Hierzu wird durch die Liste iteriert bis das Element gefunden ist.
 
 
 ### [Vigenere]
@@ -67,7 +72,7 @@ Der Output wird je nach Angabe des Benutzers in einer Datei gespeichert oder in 
 
 #### Benutzer-Beschreibung
 
-[Sesbstgeschrieben]:https://github.com/eintim/crypto-tools/tree/main/src/lib
+[Selbstgeschrieben]:https://github.com/eintim/crypto-tools/tree/main/src/lib
 [Enigma]:https://github.com/eintim/crypto-tools/blob/main/src/enigma/enigma.c
 [Vigenere]:https://github.com/eintim/crypto-tools/blob/main/src/vigenere/vigenere.c
 [DH-Handshake]:https://github.com/eintim/crypto-tools/blob/main/src/diffiehellman/diffiehellman.c
