@@ -8,6 +8,7 @@
 #include "caesar/caesar.h"
 #include "vigenere/vigenere.h"
 #include "rsa/rsa.h"
+#include "diffiehellman/diffiehellman.h"
 
 #include <stdio.h>
 #endif //SRC_HEADERS_H

@@ -19,7 +19,7 @@ int main(int argc, char *argv[]){
                 diffiehellman_gui();
                 break;
             case 'r':
-                //rsa_gui();
+                rsa_gui();
                 break;
             default:
                 break;
@@ -40,7 +40,9 @@ int main(int argc, char *argv[]){
 
     printf("Help:\n");
     printf("\t [c]aesar \t- use caesar\n");
+    printf("\t [d]h-handshake \t- shows DH-Handshake\n");
     printf("\t [e]nigma \t- use enigma\n");
+    printf("\t [r]sa \t- use RSA encryption\n");
     printf("\t [v]igenere \t- use vigenere\n");
     printf("\t [h]elp \t- show this menu\n");
     printf("\t [q]uit \t- leave this application\n");
@@ -62,7 +64,7 @@ int main(int argc, char *argv[]){
                 diffiehellman_gui();
                 break;
             case 'r':
-                //rsa_gui();
+                rsa_gui();
                 break;
             case 'q':
                 printf("Leaving Crypto Tools...\n");
@@ -70,7 +72,9 @@ int main(int argc, char *argv[]){
             case 'h':
                 printf("Help:\n");
                 printf("\t [c]aesar \t- use caesar\n");
+                printf("\t [d]h-handshake \t- shows DH-Handshake\n");
                 printf("\t [e]nigma \t- use enigma\n");
+                printf("\t [r]sa \t- use RSA encryption\n");
                 printf("\t [v]igenere \t- use vigenere\n");
                 printf("\t [h]elp \t- show this menu\n");
                 printf("\t [q]uit \t- leave this application\n");
