@@ -48,7 +48,7 @@ int main(int argc, char *argv[]){
     printf("\t [q]uit \t- leave this application\n");
     char c;
     do {
-        printf("-> ");
+        printf("main -> ");
         c = tolower(readOneChar(stdin));
         switch (c) {
             case 'e':
