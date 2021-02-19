@@ -61,7 +61,16 @@ Hierzu wird durch die Liste iteriert bis das Element gefunden ist.
 
 ### [RSA]
 #### Benutzer-Beschreibung
-
+Die RSA Verschlüsselung basirt auf der komplexität eine Zahl zu faktorisieren. Dabei wird FolenderMaßen Verschlüsselt:\
+```cypher = (Message)^publicKey mod N; Message = (cypher)^privateKey mod N```
+##### Verwendung
+Das Menü der RSA Verschlüsselung kann mit der Eingabe 'r' erreicht werden. Dort kann man über die Eingabe 'g' ein Key-Paar generieren. 
+dazu braucht das Programm 2 Primzahlen, diese müssen vom benutzer eingegeben werden.
+genrieren. Dieses gibt einem Dann mehrere Möglichkeiten ein Paar zu wählen, dabie ist darauf zu achten das ein Paar verwendet 
+wird und nicht public und private key aus unterschiedlichen Spalten, dies führt zu Fehlern. Außerdem muss die Basis N notiert werden.
+Mit diesen Informationen kann dann mit 'e' eine Nachricht verschlüsselt werden und mit 'd' eine Nachricht wieder Entschlüsselt.
+Hierbei muss einfach nur den Angaben in der Konsole folge geleistet werden.
+*Es ist zu Beachten das es **KEINE** Input-Valifation gibt!*
 #### Entwickler-Dokumentation
 
 ### [Vigenere]
