@@ -54,7 +54,7 @@ void enigma_gui() {
     //Read all the replaced Chars Error on input will not be detected!
     int replaceChars[26] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
                             25};
-    for (int i = 1; 3 * i + 11 < strlen(key); ++i) {    //Read keypairs
+    for (int i = 1; (unsigned int)(3 * i + 11) < strlen(key); ++i) {    //Read keypairs
         int valueFirstLetter = getNumberOfChar(key[3 * i + 10]);
         int valueSecondLetter = getNumberOfChar(key[3 * i + 11]);
         replaceChars[valueFirstLetter] = valueSecondLetter;
@@ -75,6 +75,7 @@ void enigma_gui() {
         if (error) {
             printf("Something went wrong!");
         }
+        free(filename);
     } else {
         printf("%s\n", input_str);  //print output
     }

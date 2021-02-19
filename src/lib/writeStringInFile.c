@@ -11,8 +11,8 @@ int writeStringInFile(char * string, char * filename, char * mode){
         fclose(file);
         return errno;
     }
-    else{
-        for (int i = 0; string[i] != '\0' ; ++i) {
+    else {
+        for (int i = 0; string[i] != '\0'; ++i) {
             fputc(string[i], file);
         }
         fclose(file);

@@ -1,11 +1,17 @@
 #include "vigenere.h"
 
 void vigenere_gui(){
+
     char c;
     printf("Vigenere Menu\n");
     printf("The Vigenère cipher is a method of encrypting alphabetic text by using a series of interwoven Caesar ciphers, based on the letters of a keyword.\nIt employs a form of polyalphabetic substitution.\n\n");
+    printf("Help:\n");
+    printf("\t [d]ecrypt \t- decrypt some data\n");
+    printf("\t [e]ncrypt \t- encrypt some data\n");
+    printf("\t [h]elp \t- show this menu\n");
+    printf("\t [q]uit \t- leave this application\n");
     do {
-        printf("-> ");
+        printf("Vigenere -> ");
         c = tolower(readOneChar(stdin));
         switch (c) {
             case 'd':

@@ -14,7 +14,7 @@ char * readFileInString(char * filepath, unsigned int maxLen){//Reads the file a
     str = malloc(sizeof(char));
     str[0] = '\0';
     char tmp;
-    for (int i = 0; i < maxLen && ((tmp = fgetc(file)) != EOF); ++i) {
+    for (int i = 0; (unsigned int)i < maxLen && ((tmp = fgetc(file)) != EOF); ++i) {
         str = realloc(str, (i+2)* sizeof(char));
         str[i] = tmp;
         str[i+1]= '\0';
