@@ -19,7 +19,7 @@ ctype.h      | readOneChar.h
 math.h       | writeStringInFile.h
 erno.h       |
 
-###[Enigma]
+### [Enigma]
 > * **Benutzer-Beschreibung**  
 >  Das Unterprogramm basiert auf der Gleichnamigen Enigma Maschine des II Weltkrieges.\
 > Der Benutzer hat die Möglichkeit aus eine Datei zu lesen oder den Text selbst einzugeben,\
@@ -30,7 +30,7 @@ erno.h       |
 > * **Entwickler-Dokumentation**
 
 
-###[Vigenere]
+### [Vigenere]
 > * **Benutzer-Beschreibung**  
 > Das Unterprogramm basiert auf der Gleichnamigen  Vigenere-Chiffre-Verschlüsselung.\
 > Zuerst wird abgefragt ob der Benutzer eine Nachricht verschlüsseln oder entschlüsseln will,\
@@ -41,7 +41,7 @@ erno.h       |
 > 
 > * **Entwickler-Dokumentation**
 >
-###[DH-Handshake]
+### [DH-Handshake]
 > * **Benutzer-Beschreibung**  
 > Zuerst werde zwei öffentliche Schlüssel abgefragt, dann kann man zwei geheime Schlüssel festlegen.\
 > Anhand der öffentlichen Schlüssel werden neue Schlüsse errechnet welche, \
@@ -51,7 +51,7 @@ erno.h       |
 >
 > * **Entwickler-Dokumentation**
 >
-###[Caesar]
+### [Caesar]
 > * **Benutzer-Beschreibung**  
 > Das Unterprogramm Caesar basiert auf der Gleichnamigen Caesar-Verschlüsselung.\
 > Zuerst wird abgefragt ob der Benutzer eine Nachricht verschlüsseln oder entschlüsseln will,\
