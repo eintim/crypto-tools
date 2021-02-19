@@ -89,7 +89,7 @@ void rsa_decrypt_gui(){
     char * output = rsa_decrypt(input_str, privateKey, base);
     printf("Write Output in File?(y/N) ");
     c = tolower(readOneChar(stdin));
-    if (c == 'y'){
+    if (c != 'y'){
         printf("%s\n", output);
     }
     else{
@@ -97,7 +97,7 @@ void rsa_decrypt_gui(){
         char * filename = readString(stdin, -1);
         int result = writeStringInFile(output, filename, "w");
         if (result == 0){
-            printf("Succesfully written file '%s'", filename);
+            printf("Succesfully written file '%s'\n", filename);
         }
         free(filename);
     }
