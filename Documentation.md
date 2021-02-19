@@ -69,7 +69,7 @@ den Benutzern weitergegeben werden, ohne den geheimen Schlüssel des jeweils and
 ##### Verwendung
 Im Programm wird der Benutzer dazu aufgefordert 4 Zahlenwerte festzulegen.\
 ```Öffentliche Werte: P(Primzahl) und G (G < P)
-Geheime Werte: a(a < P) und b(b < P)```\
+Geheime Werte: a(a < P) und b(b < P)```
 Hierbei gilt zu beachtet das es keine Input-Validation gibt!\
 Danach wird für jede Seite (a und b) ein öffentlicher Schlüssel berechnet.\
 Dieser Schlüssel wird dann den jeweils anderen "zugeschickt".\
