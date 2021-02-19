@@ -72,7 +72,15 @@ Daraufhin wird die Zahl als Integer, welche den Schlüssel darstellt abgefragt.\
 Der Output wird je nach Angabe des Benutzers in einer Datei gespeichert oder in der Konsole ausgegeben.
 
 #### Entwickler-Dokumentation
-//TODO
+Nach dem, durch die Selbstgeschriebene Bibliotheksfunktion :```readOneChar.h```, Entschieden wurde ob ent/verschlüsselt werden soll \
+und ob der Benutzer von einer Datei lesen will, liest das Programm ``Caesar.c`` in der Unterfunktion:``input()`` seinen zu ent/verschlüsselnden Text und den gewünschten Schlüssel ein.\
+Dies geschieht für den Text mithilfe der Selbstgeschriebene Bibliotheksfunktion :`` readString.h`` oder ``readFileInString.h``.\
+Da der Schlüssel mithilfe der Funktion ``scanf();`` eingelesen wurde und das Element nicht im Buffer stehen Bleiben soll,\
+wird dieser mithilfe der selbstgeschriebene Bibliotheksfunktion : ``clearInputBuffer.h`` gereinigt.\
+Der Text, der Name der Datei und Schlüssel werden in einem Struct :``inputStruct``, durch einen Pointer übergeben.\
+Mit dem Inhalt diese Pointers werden nun die Operationen ``caesar_decrypt()`` oder ``caesar_encrypt()`` durchgeführt, \
+in welchen die einzelnen Character des Übergebenen Textes um den Schlüssel erhöht oder verringert werden.\
+Äquivalent zur Eingabe fragt die Funktion ``output()`` wie der ver/entschlüsselte Text ausgegeben werden soll und gibt ihn aus.
 
 [Selbstgeschrieben]:https://github.com/eintim/crypto-tools/tree/main/src/lib
 [Enigma]:https://github.com/eintim/crypto-tools/blob/main/src/enigma/enigma.c
