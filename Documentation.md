@@ -60,16 +60,21 @@ ohne den geheimen Schlüssel des jeweils anderen zu kennen.
 ### [Caesar]
 #### Benutzer-Beschreibung
 Das Unterprogramm Caesar basiert auf der Gleichnamigen Caesar-Verschlüsselung.\
+Bei welcher jeder Buchstabe des Textes, im Alphabet um den [gleichen Wert verschoben wird](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Caesar3.svg/330px-Caesar3.svg.png)
+
+#### Verwendung
+Das Programm kann in dem Menü durch die Eingabe 'c' aufgerufen werden. \
 Zuerst wird abgefragt ob der Benutzer eine Nachricht verschlüsseln oder entschlüsseln will,\
 danach wird dem Benutzer  die Möglichkeit gegeben den zu Ver/entschlüsselnden Text aus einer Datei zu lesen oder selbst einzugeben.\
-Daraufhin wird die Zahl zum ver/entschlüsseln abgefragt.\
+Daraufhin wird die Zahl als Integer, welche den Schlüssel darstellt abgefragt.\
 Der Output wird je nach Angabe des Benutzers in einer Datei gespeichert oder in der Konsole ausgegeben.
 
-#### Benutzer-Beschreibung
+#### Entwickler-Dokumentation
+//TODO
 
-[Sesbstgeschrieben]:https://github.com/eintim/crypto-tools/tree/main/src/lib
+[Selbstgeschrieben]:https://github.com/eintim/crypto-tools/tree/main/src/lib
 [Enigma]:https://github.com/eintim/crypto-tools/blob/main/src/enigma/enigma.c
 [Vigenere]:https://github.com/eintim/crypto-tools/blob/main/src/vigenere/vigenere.c
 [DH-Handshake]:https://github.com/eintim/crypto-tools/blob/main/src/diffiehellman/diffiehellman.c
 [Caesar]:https://github.com/eintim/crypto-tools/blob/main/src/caesar/caesar.c
-        
+          
