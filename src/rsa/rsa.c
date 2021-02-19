@@ -3,10 +3,9 @@
 //
 
 #include "rsa.h"
-#define FORMAT_STR(string) "%0"string"d"
 
 void rsa_gui(){
-    char c;
+    int c;
     printf("RSA Menu\n");
     rsa_print_help();
     do {
@@ -176,14 +175,14 @@ char * rsa_decrypt(const char * string, const unsigned long long exponent, const
     char * output = malloc(((strlen(string)+1)/(charlen+1)+1)*chars_per_encryption * sizeof(char));
 
     current[charlen] = '\0';
-    unsigned long long currentInt = 0;
+    unsigned long long currentInt;
     int outIndex = 0;
     for (int i = 0; i < strlen(string); i = i+charlen+1) {
         memcpy(current, string+i, charlen);
         currentInt = strtoull(current, NULL, 10);
         currentInt = pow_mod(currentInt, exponent, mod);
         for (int j = 0; j < chars_per_encryption; ++j) {
-            output[outIndex] = (currentInt / pow_mod(1000, chars_per_encryption-j-1, ULLONG_MAX)) % 1000;
+            output[outIndex] = (char)((currentInt / pow_mod(1000, chars_per_encryption-j-1, ULLONG_MAX)) % 1000);
             outIndex++;
         }
     }
@@ -212,7 +211,6 @@ void rsa_calculate_keypair(unsigned long long int p, unsigned long long int q){
         printf("%llu %llu\n", public, private);
     }
     printf("Chooce one of the numbers of the Key Choices as Public and one as Private and use %llu as Base.\n", base);
-    return;
 }
 
 void rsa_get_factors(unsigned long long int number, unsigned long long int * f1, unsigned long long int * f2){
@@ -239,7 +237,7 @@ char * rsa_encrypt(const char * string, const unsigned long long exponent, const
     int chars_per_encryption = (((int) ceil(log10(mod)))/ 3);
     //Calculate amount of Space needed
     int space;
-    space = ceil(((float)strlen(string)) / chars_per_encryption);
+    space = ceil(((double)strlen(string)) / (double)chars_per_encryption);
     space = (charlen+1) * space +1;
 
     //Main Encrypt loop
@@ -253,11 +251,11 @@ char * rsa_encrypt(const char * string, const unsigned long long exponent, const
         }
         current = pow_mod(c, exponent, mod); //Encryption
 
-        int len = 0;
+        int len;
         len = sprintf(output+i*(charlen+1)/chars_per_encryption, str_charlen, current); //Convvert int to String
         if (len != (charlen+1)){
-            printf("Error while encoding '%c' got %d", string[i], current);
-            return EXIT_FAILURE;
+            printf("Error while encoding '%c' got %llu", string[i], current);
+            return NULL;
         }
     }
     output[strlen(output)-1] = '\0'; //Remove ' ' at the end
