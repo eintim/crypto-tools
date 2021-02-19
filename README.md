@@ -22,11 +22,19 @@ Simply start the executable.
 ```
 Its also possible to use a shortcut to an specific ciphers
 ```
-./crypto-tools -e
+./crypto-tools [-c|-d|-e|-r|-v]
+
+Description
+  -c Caesar
+  -d Diffie Hellman Key Exchange
+  -e Enigma
+  -r RSA
+  -v Vigenere
 ```
 ## Build
+### On Linux
 ```
 make
 ```
 ## License
-Crypto-Tools is under the unlicense license. See the [LICENSE] for more information.
+Crypto-Tools is under the unlicense license. See the [LICENSE]https://github.com/eintim/crypto-tools/blob/main/LICENSE for more information.
