@@ -9,7 +9,7 @@ void caesar_gui()
     printf("\t [h]elp \t- show this menu\n");
     printf("\t [q]uit \t- leave this application\n");
     do {
-        printf("-> ");
+        printf("Caeser -> ");
         c = tolower(readOneChar(stdin));
         switch (c) {
             case 'd':
