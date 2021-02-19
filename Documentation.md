@@ -91,10 +91,29 @@ Der Output wird je nach Angabe des Benutzers in einer Datei gespeichert oder in 
 
 #### Entwickler-Dokumentation
 
+### [Libs]
+#### clearInputBuffer
+Diese Funktion ließt den kompletten Input-Buffer bis zu einem ```EOF``` oder Linefeed. Diese Funktion wurde 
+geschreben da ```fflush()``` in ANSI C nur auf Outputstreams definiert ist und nicht auf Input Streams.
+Die Funktion wurde mit ```getc()``` implementiert und hat kein Return Value.
+#### readFileInString
+Diese Funktion öffnet ein File ließt es komplett in einen String, schließt das file wieder und gibt den String zurück.
+Dabei wird dynamisch Speicher angefordert um sicherzustellen, dass der String in das dazugehörige Chararray passt.
+Das File wird mit ```fopen``` geöffnet, mit ```fgetc``` gelesen und mit ```fclose``` wieder geschlossen.
+Die Funktion gibt daraufhin ein Pointer auf den Speicherplatz mit dem gelesenen String zurück.
+#### readOneChar
+ReadOneChar ließt den gesammten Inputstream gibt allerdings nur den ersten Charakter zurück. Durch das lesen
+des gesamten Streams wird dieser wieder in einen definierten zustand verlassen.
+#### readString
+Diese Funktion ließt eine komplette Zeile aus dem gegebenen Input-Stream. Dabei wird dynamisch Speicher allokiert und 
+ein Pointer auf den Beginn des Strings übergeben, der String ist terminiert.
+#### writeStringInFile
+Diese Funktion öffnet eine Datei und schreibt den gegebenen String mithilfe von ```fputc``` hinein.
+Dabei kann durch den Funktionsaufruf bestimmt werden ob der String angehängt werden soll oder die Datei
+überschreiben werden soll.
+Ausßerdem muss sichergegangen werden das der String terminiert ist.
 
-
-
-
+[Libs]:https://github.com/eintim/crypto-tools/tree/main/src/lib
 [Selbstgeschrieben]:https://github.com/eintim/crypto-tools/tree/main/src/lib
 [Enigma]:https://github.com/eintim/crypto-tools/blob/main/src/enigma
 [Vigenere]:https://github.com/eintim/crypto-tools/blob/main/src/vigenere
