@@ -51,7 +51,7 @@ welche die verwendeten Rotoren angeben, 3 Buchstaben welche die Anfangsstellung 
 und einer Liste an Buchstaben welche zunächst ersetzt werden, bevor die Buchstaben durch die Walzen laufen.
 Ein Schlüssel hat somit folgendes Format: ```III c c c *(cc )``` mit ```I : Int``` und ```c: Char```.
 Die Entschlüsselung funktioniert exakt gleich, da das Verfahren der Enigma Symetrisch ist.\
-*Es ist zu Beachten das es **KEINE** Input-Valifation gibt!*
+*Es ist zu Beachten das es **KEINE** Input-Validation gibt!*
 #### Entwickler-Dokumentation
 Das Enigma Programm liest seine Eingaben mithilfe der Libary Funktionen ein. Die Eigenschaften der Schlüssel werden in Arrays gespeichert um leichtes zugreifen zu ermöglichen.
 Die Vertauschung der Buchstaben ist durch einen Lookup-table implementiert. Die Verschlüsselung selber beruht darauf
@@ -69,9 +69,17 @@ dazu braucht das Programm 2 Primzahlen, diese müssen vom benutzer eingegeben we
 genrieren. Dieses gibt einem Dann mehrere Möglichkeiten ein Paar zu wählen, dabie ist darauf zu achten das ein Paar verwendet 
 wird und nicht public und private key aus unterschiedlichen Spalten, dies führt zu Fehlern. Außerdem muss die Basis N notiert werden.
 Mit diesen Informationen kann dann mit 'e' eine Nachricht verschlüsselt werden und mit 'd' eine Nachricht wieder Entschlüsselt.
-Hierbei muss einfach nur den Angaben in der Konsole folge geleistet werden.
-*Es ist zu Beachten das es **KEINE** Input-Valifation gibt!*
+Hierbei muss einfach nur den Angaben in der Konsole folge geleistet werden.\
+*Es ist zu Beachten das es **KEINE** Input-Validation gibt!*
 #### Entwickler-Dokumentation
+In der Implementation von RSA ist zu bedenken, dass es zu großen Hochzahlen mit großen basen kommt, daher wurde eine Funktion implementiert,
+die schnell eine Hochzahl in einer Restklasse berechnen kann, dazu wird Rekursiv vorgegangen und dadurch ist die komplexität
+nahe an der Komplexitätsklasse ```O(log n)```. Außerdem muss aus dem String eine Zahl gemacht werden und dann zum schreiben in die Konsole,
+oder eine Datei aus der Zahl ein String, dazu wurde ```sprintf``` verwendet. Diese Funktion ermöglicht es eine Ausgabe in ein 
+CharArray zu speichern. Dabei können die Formatierungszeichen von ```printf``` verwendet werden.
+Um aus einem String eine Zahl zu machen wurde ```strtollu``` verwendet, diese Funktion kann aus einem String in einen ```unsigned long long``` konvertieren.
+```unsigned long long``` wurde verwendet um RSA mit grösmöglichen Zahlen sicherzustellen. Die Genauchigkeit eines ```double``` wäre in dieser
+Anwendung nicht ausreichend gewesen.
 
 ### [Vigenere]
 #### Benutzer-Beschreibung
