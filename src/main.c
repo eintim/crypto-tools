@@ -15,6 +15,12 @@ int main(int argc, char *argv[]){
             case 'c':
                 caesar_gui();
                 break;
+            case 'd':
+                diffiehellman_gui();
+                break;
+            case 'r':
+                //rsa_gui();
+                break;
             default:
                 break;
         }
@@ -51,6 +57,12 @@ int main(int argc, char *argv[]){
                 break;
             case 'c':
                 caesar_gui();
+                break;
+            case 'd':
+                diffiehellman_gui();
+                break;
+            case 'r':
+                //rsa_gui();
                 break;
             case 'q':
                 printf("Leaving Crypto Tools...\n");
