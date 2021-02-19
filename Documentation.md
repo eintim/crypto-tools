@@ -20,25 +20,54 @@ ctype.h      | readOneChar.h
 math.h       | writeStringInFile.h
 erno.h       |
 
+
 ### [Caesar]
 #### Benutzer-Beschreibung
 Das Unterprogramm Caesar basiert auf der Gleichnamigen Caesar-Verschlüsselung.\
+Bei welcher jeder Buchstabe des Textes, im Alphabet um den gleichen Wert verschoben wird 
+
+![Funktionsweiße](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Caesar3.svg/330px-Caesar3.svg.png "Bildlichen darstellung der Funktionsweiße")
+
+##### Verwendung
+Das Programm kann in dem Menü durch die Eingabe 'c' aufgerufen werden. \
 Zuerst wird abgefragt ob der Benutzer eine Nachricht verschlüsseln oder entschlüsseln will,\
 danach wird dem Benutzer  die Möglichkeit gegeben den zu Ver/entschlüsselnden Text aus einer Datei zu lesen oder selbst einzugeben.\
-Daraufhin wird die Zahl zum ver/entschlüsseln abgefragt.\
+Daraufhin wird die Zahl als Integer, welche den Schlüssel darstellt abgefragt.\
 Der Output wird je nach Angabe des Benutzers in einer Datei gespeichert oder in der Konsole ausgegeben.
 
-#### Benutzer-Beschreibung
+#### Entwickler-Dokumentation
+Nach dem, durch die Selbstgeschriebene Bibliotheksfunktion :```readOneChar.h```, Entschieden wurde ob ent/verschlüsselt werden soll \
+und ob der Benutzer von einer Datei lesen will, liest das Programm ``Caesar.c`` in der Unterfunktion:``input()`` seinen zu ent/verschlüsselnden Text und den gewünschten Schlüssel ein.\
+Dies geschieht für den Text mithilfe der Selbstgeschriebene Bibliotheksfunktion :`` readString.h`` oder ``readFileInString.h``.\
+Da der Schlüssel mithilfe der Funktion ``scanf();`` eingelesen wurde und das Element nicht im Buffer stehen Bleiben soll,\
+wird dieser mithilfe der selbstgeschriebene Bibliotheksfunktion : ``clearInputBuffer.h`` gereinigt.\
+Der Text, der Name der Datei und Schlüssel werden in einem Struct :``inputStruct``, durch einen Pointer übergeben.\
+Mit dem Inhalt diese Pointers werden nun die Operationen ``caesar_decrypt()`` oder ``caesar_encrypt()`` durchgeführt, \
+in welchen die einzelnen Character des Übergebenen Textes um den Schlüssel erhöht oder verringert werden.\
+Äquivalent zur Eingabe fragt die Funktion ``output()`` wie der ver/entschlüsselte Text ausgegeben werden soll und gibt ihn aus.
 
 ### [DH-Handshake]
-### Benutzer-Beschreibung
+#### Benutzer-Beschreibung
+Der Diffie-Hellmann Key Exchange ermöglicht zwei Kommunikationspaartnern über eine öffentliche/abhörbare Leitung\
+einen gemeinsamen geheimen Schlüssel zu vereinbaren. Verschiedene Varianten dieses Verfahrens\
+werden heute für Sicherheitsprotokolle im Internet verwendet.\
 Zuerst werde zwei öffentliche Schlüssel abgefragt, dann kann man zwei geheime Schlüssel festlegen.\
 Anhand der öffentlichen Schlüssel werden neue Schlüsse errechnet welche, \
-den Benutzern weitergegeben werden,
-ohne den geheimen Schlüssel des jeweils anderen zu kennen.
-
+den Benutzern weitergegeben werden, ohne den geheimen Schlüssel des jeweils anderen zu kennen.
+##### Verwendung
+Im Programm wird der Benutzer dazu aufgefordert 4 Zahlenwerte festzulegen.\
+Öffentliche Werte: ```P(Primzahl)``` und ```G(G < P)```\
+Geheime Werte: ```a(a < P)``` und ```b(b < P)```\
+Hierbei gilt zu beachtet das es keine Input-Validation gibt!\
+Danach wird für jede Seite (a und b) ein öffentlicher Schlüssel berechnet.\
+Dieser Schlüssel wird dann den jeweils anderen "zugeschickt".\
+Mithilfe dieses Schlüssel kann nun jede Partei einen geheimen Schlüssel errechnen\
+und dieser wird dann Ausgegeben. Aufgrund des Diffie-Hellmanns Verfahren haben beide Parteien nun\
+den selben geheimen Schlüssel.\
 #### Entwickler-Dokumentation
-
+Das Programm liest die Eingaben aus dem Stream stdin nacheinander ein und berechnet daraus die passenden Schlüssel.\
+Die Funktion pMod ist für die Berechnung der Schlüssel zuständig. Dahinter steckt die Formel ```res=a^b mod n```\
+Um überläufe zu vermeiden wird intern der Datentyp ```long long``` verwendet.
 ### [Enigma]
 #### Benutzer-Beschreibung
 Die Enigma-Verschlüsselung beruht auf der Enigma Maschine wie sie im Zweiten Weltkrieg 1945 von den Deutschen 
@@ -83,13 +112,24 @@ Anwendung nicht ausreichend gewesen.
 
 ### [Vigenere]
 #### Benutzer-Beschreibung
-Das Unterprogramm basiert auf der Gleichnamigen  Vigenere-Chiffre-Verschlüsselung.\
-Zuerst wird abgefragt ob der Benutzer eine Nachricht verschlüsseln oder entschlüsseln will,\
-danach wird dem Benutzer  die Möglichkeit gegeben den zu Ver/entschlüsselnden Text aus einer Datei zu lesen oder selbst einzugeben.\
-Daraufhin wird der Buchstaben zum ver/entschlüsseln abgefragt.\
-Der Output wird je nach Angabe des Benutzers in einer Datei gespeichert oder in der Konsole ausgegeben.
-
+Bei der Vigenère-Verschlüsselung handelt es sich um ein Substitutionsverfahren.\
+Dazu wird der Klartext in Einzelzeichen zerlegt und durch Geheimtextzeichen substituiert.\
+Die Geheimtextzeichen werden durch ein Kennwort über das Vigenère-Quadrat ausgewählt.\
+Dabei hebt sich Vigenere von einer monoalphabetischen Substitutionsmethode wie Caesar ab,\
+da mehrere Alphabete verwendet werden.
+##### Verwendung
+Das Programm kann im Hauptmenü durch die Eingabe 'v' aufgerufen werden.\
+Daraufhin wird man dazu aufgefordert zwischen Ent-/Verschlüsslung ('d' oder 'e') zu wählen.\
+Anschließend ist die zu ent-/verschlüssende Nachricht zu einzugeben.\
+Ggf. kann diese Nachricht auch aus einer Datei eingelesen werden.\
+Danach wird der Schlüssel abgefragt. Dabei besteht der Schlüssel aus einem beliebig langen Wort.\
+Allerdings werden nur Buchstaben beachtet. (Groß/Kleinschreibung spielt keine Rolle)\
+Danach wird das ent-/verschlüssende Wort ausgegeben.
 #### Entwickler-Dokumentation
+Das Programm liest die Eingaben über eine der Libary Funktionen ein. Nachricht und Schlüssel werden jeweils in Arrays\
+gespeichert um leichter darauf zugreifen zu können. Danach werden die einzelnen Buchstaben durch den errechnetet Geheimbuchstabe substituiert.\
+Hierbei wird nach jedem verschüsselten Buchstaben auch ein Zeichen im Schlüssel weitergesprungen.\
+Sollte dabei der Schlüssel vor der Nachricht zuende sein wird der Zähler des Schlüssel wieder resetet.
 
 ### [Libs]
 #### clearInputBuffer
@@ -120,3 +160,4 @@ Ausßerdem muss sichergegangen werden das der String terminiert ist.
 [DH-Handshake]:https://github.com/eintim/crypto-tools/blob/main/src/diffiehellman
 [Caesar]:https://github.com/eintim/crypto-tools/blob/main/src/caesar
 [RSA]:https://github.com/eintim/crypto-tools/tree/main/src/rsa
+
