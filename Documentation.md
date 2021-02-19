@@ -79,7 +79,7 @@ den selben geheimen Schlüssel.\
 #### Entwickler-Dokumentation
 Das Programm liest die Eingaben aus dem Stream stdin nacheinander ein und berechnet daraus die passenden Schlüssel.\
 Die Funktion pMod ist für die Berechnung der Schlüssel zuständig. Dahinter steckt die Formel ```res=a^b mod n```\
-Um überläufe zu vermeiden wird intern der Datentyp ```long long``` verwendet\
+Um überläufe zu vermeiden wird intern der Datentyp ```long long``` verwendet.
 
 ### [Caesar]
 #### Benutzer-Beschreibung
